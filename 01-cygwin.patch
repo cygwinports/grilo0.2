@@ -1,0 +1,25 @@
+--- origsrc/grilo-0.2.0/src/grl-registry.c	2012-08-13 04:10:59.000000000 -0500
++++ src/grilo-0.2.0/src/grl-registry.c	2012-09-24 11:03:30.476787700 -0500
+@@ -354,7 +354,7 @@ grl_registry_preload_plugin (GrlRegistry
+   gchar *file;
+   gchar *suffix;
+   gchar *id;
+-  const gchar *module_name;
++  gchar *module_name;
+   gchar *module_filename;
+   gchar *module_fullpathname;
+ 
+@@ -399,6 +399,13 @@ grl_registry_preload_plugin (GrlRegistry
+     if (g_path_is_absolute (module_name)) {
+       grl_plugin_set_filename (plugin, module_name);
+     } else {
++#ifdef __CYGWIN__
++      if (g_str_has_prefix (module_name, "lib")) {
++        module_name[0] = 'c';
++        module_name[1] = 'y';
++        module_name[2] = 'g';
++      }
++#endif
+       if (g_str_has_suffix (module_name, "." G_MODULE_SUFFIX)) {
+         module_fullpathname = g_build_filename (dirname, module_name, NULL);
+       } else {
