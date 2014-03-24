@@ -2,7 +2,7 @@ ORIG_PN="grilo"
 inherit gnome2
 
 NAME="grilo0.2"
-VERSION=0.2.6
+VERSION=0.2.10
 RELEASE=1
 CATEGORY="Libs"
 SUMMARY="Media discovery framework"
@@ -12,11 +12,13 @@ from various sources using a single API."
 PATCH_URI="01-cygwin.patch
 	   02-gtk-doc.patch"
 
-PKG_NAMES="${NAME} lib${NAME}_1 lib${NAME}-devel girepository-Grl0.2 vala-${NAME}"
+PKG_NAMES="${NAME} lib${NAME}_1 lib${NAME}-devel lib${NAME}-doc girepository-Grl0.2 vala-${NAME}"
 grilo0_2_CATEGORY="Net"
 grilo0_2_CONTENTS="usr/bin/*.exe usr/share/man/"
-libgrilo0_2_1_CONTENTS="usr/bin/cyggrilo-0.2-1.dll usr/bin/cyggrlnet-0.2-0.dll usr/share/doc/ usr/share/locale/"
-libgrilo0_2_devel_CONTENTS="usr/include/ usr/lib/lib* usr/lib/pkgconfig/ usr/share/gtk-doc/"
+libgrilo0_2_1_CONTENTS="usr/bin/cyggrilo-0.2-1.dll usr/bin/cyggrl*-0.2-0.dll usr/share/doc/ usr/share/locale/"
+libgrilo0_2_devel_CONTENTS="usr/include/ usr/lib/lib* usr/lib/pkgconfig/"
+libgrilo0_2_doc_CATEGORY="Doc"
+libgrilo0_2_doc_CONTENTS="usr/share/gtk-doc/"
 girepository_Grl0_2_CONTENTS="usr/*/gir*/Grl*-0.2.*"
 vala_grilo0_2_CONTENTS="usr/share/vala*/vapi/grilo*-0.2.*"
 
